@@ -41,6 +41,7 @@ class NewsletterSubscriberService {
     }
 
     void verifyByEmail(String email) {
+        log.info("Verifying ${email}...")
         newsletterSubscriberGormService.updateVerifiedByEmail(email, true)
     }
 

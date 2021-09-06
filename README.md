@@ -21,4 +21,3 @@
 - [Excel Files](http://spreadsheet.dsl.builders). _spreadsheet.dsl.builders_ uses internally [Apache POI](https://poi.apache.org)
 
 - [SLF4j](http://www.slf4j.org)
-- [JSON Web Signature (JWS) with HMAC protection](https://connect2id.com/products/nimbus-jose-jwt/examples/jws-with-hmac)

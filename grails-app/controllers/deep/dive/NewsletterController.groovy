@@ -1,15 +1,13 @@
 package deep.dive
 
-import com.nimbusds.jwt.JWT
-import com.nimbusds.jwt.JWTParser
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured("ROLE_USER")
 class NewsletterController {
 
     static allowedMethods = [
-            index: ['GET'],
-            confirm: ['GET'],
+            index    : ['GET'],
+            confirm  : ['GET'],
             subscribe: ['POST']
     ]
 
@@ -23,12 +21,13 @@ class NewsletterController {
 
     @Secured("IS_AUTHENTICATED_ANONYMOUSLY")
     def confirm(String token) {
-        if (!transactionalEmailComposerService.verifyJwt(token)) {
+        String email = transactionalEmailComposerService.verifyToken(token)
+
+        if (!email) {
             render(view: '/notFound')
             return
         }
-        JWT jwt = JWTParser.parse(token)
-        String email = jwt.getJWTClaimsSet().getSubject()
+
         newsletterSubscriberService.verifyByEmail(email)
         [:]
     }

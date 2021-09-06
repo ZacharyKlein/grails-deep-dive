@@ -16,7 +16,7 @@ class NewsletterSubscriberListenerService {
         if (event.entityAccess.getEntity() instanceof NewsletterSubscriberEntity) {
             String email = event.entityAccess.getPropertyValue("email")
             log.info("received async subscription with email: ${email}")
-            String htmlEmail = transactionalEmailComposerService.compose(email)
+            String htmlEmail = transactionalEmailComposerService.composeWelcome(email)
             log.info("composed html email: {}", htmlEmail)
             transactionalEmailService.send(email, htmlEmail)
         }

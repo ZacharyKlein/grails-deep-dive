@@ -12,14 +12,9 @@ class TransactionalEmailComposerServiceSpec extends Specification {
     @Shared
     TransactionalEmailComposerService transactionalEmailComposerService
 
-    void "secret is populated via configuration"() {
+    void "issuer is populated via configuration"() {
         expect:
-        transactionalEmailComposerService.signer
+        transactionalEmailComposerService.issuer
 
-        and:
-        transactionalEmailComposerService.verifier
-
-        and:
-        transactionalEmailComposerService.verifyJwt(transactionalEmailComposerService.signedJwt('http://locahost:8080', 'delamos@objectcomputing.com'))
     }
 }
