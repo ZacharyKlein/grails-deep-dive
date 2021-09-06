@@ -9,9 +9,14 @@ class TestTransactionalEmailService implements TransactionalEmailService {
 
     @Override
     void send(String recipient, String htmlEmail) {
-        String email = htmlEmail.substring(htmlEmail.indexOf('token=') + 'token='.length())
-        String token = email.substring(0, email.indexOf("\""))
-        log.info("for {} parsed token: {}", recipient, token)
-        recipientsToTokens.put(recipient, token)
+        //Cache confirmation tokens if welcome email...
+        if (htmlEmail.contains("token")) {
+            String email = htmlEmail.substring(htmlEmail.indexOf('token=') + 'token='.length())
+            String token = email.substring(0, email.indexOf("\""))
+            log.info("for {} parsed token: {}", recipient, token)
+            recipientsToTokens.put(recipient, token)
+        }
+
+        log.info "Sending email to ${recipient}..."
     }
 }

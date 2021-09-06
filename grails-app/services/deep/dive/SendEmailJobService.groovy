@@ -5,24 +5,23 @@ import groovy.util.logging.Slf4j
 import org.springframework.scheduling.annotation.Scheduled
 
 @Slf4j
-@CompileStatic
 class SendEmailJobService {
 
     static lazyInit = false
 
     NewsletterSubscriberGormService newsletterSubscriberGormService
-    TransactionalEmailComposerService emailComposerService
-    TransactionalEmailService emailService
+    TransactionalEmailComposerService transactionalEmailComposerService
+    TransactionalEmailService transactionalEmailService
 
-    @Scheduled(cron = "0 0/5 * * * ?")
+    @Scheduled(cron = "0 0/1 * * * ?")
     void sendEmailNewsletters() {
         List<NewsletterSubscriberEntity> verifiedSubscribers = newsletterSubscriberGormService.findAllByVerified(true)
 
         log.info "Sending newsletters to {} verified subscribers", verifiedSubscribers.size()
 
         verifiedSubscribers.each { subscriber ->
-            String html = emailComposerService.composeNewsletter(subscriber.name)
-            emailService.send(subscriber.email, html)
+            String html = transactionalEmailComposerService.composeNewsletter(subscriber.name)
+            transactionalEmailService.send(subscriber.email, html)
         }
 
     }
