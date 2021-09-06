@@ -35,4 +35,4 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
 root(ERROR, ['STDOUT'])
-logger('deep.dive', INFO, ['STDOUT'])
+logger('deep.dive', INFO)
