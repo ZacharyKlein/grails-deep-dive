@@ -1,8 +1,11 @@
 ---
+demo:
+    secret: 'pleaseChangeThisSecretForANewOne'
+---
 grails:
     profile: web
     codegen:
-        defaultPackage: grails.deep.dive
+        defaultPackage: deep.dive
     gorm:
         reactor:
             # Whether to translate GORM events into Reactor events
@@ -135,3 +138,9 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+---
+environments:
+    development:
+        grails.serverURL: 'http://localhost:8080'
+    production:
+        grails.serverURL: 'https://mycompany.com'

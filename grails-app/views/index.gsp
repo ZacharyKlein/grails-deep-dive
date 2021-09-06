@@ -62,6 +62,9 @@
 
         <div id="controllers" role="navigation">
             <h2>Available Controllers:</h2>
+            <sec:ifLoggedIn>
+                User: <sec:loggedInUserInfo field='username'/>
+            </sec:ifLoggedIn>
             <ul>
                 <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
                     <li class="controller">

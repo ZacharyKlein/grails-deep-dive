@@ -1,0 +1,9 @@
+import deep.dive.NewsletterSubscriber
+
+model {
+    NewsletterSubscriber subscriber
+}
+json {
+    e subscriber.email
+    first_name subscriber.name
+}

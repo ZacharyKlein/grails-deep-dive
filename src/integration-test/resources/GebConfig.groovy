@@ -1,8 +1,26 @@
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.htmlunit.HtmlUnitDriver
+
+if (System.getProperty('geb.env') == null) {
+    // default is to use htmlunit
+    driver = {
+        HtmlUnitDriver htmlUnitDriver = new HtmlUnitDriver()
+        htmlUnitDriver.javascriptEnabled = true
+        htmlUnitDriver
+    }
+}
 
 environments {
+
+    htmlUnit {
+        driver = {
+            HtmlUnitDriver htmlUnitDriver = new HtmlUnitDriver()
+            htmlUnitDriver.javascriptEnabled = true
+            htmlUnitDriver
+        }
+    }
 
     // run via “./gradlew -Dgeb.env=chrome iT”
     chrome {

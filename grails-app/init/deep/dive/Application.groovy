@@ -1,4 +1,4 @@
-package grails.deep.dive
+package deep.dive
 
 import grails.boot.GrailsApp
 import grails.boot.config.GrailsAutoConfiguration

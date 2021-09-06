@@ -1,0 +1,9 @@
+import deep.dive.NewsletterSubscriber
+
+model {
+    Set<NewsletterSubscriber> confirmedUsers
+}
+json {
+    total confirmedUsers.size()
+    subscribers tmpl.subscriber(confirmedUsers)
+}
