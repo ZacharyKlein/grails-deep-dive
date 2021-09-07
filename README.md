@@ -1,3 +1,5 @@
+![Grails Deep Dive](grails-deep-dive.jpeg)
+
 - [Main Grails Docs](https://docs.grails.org/latest/guide/single.html)
 
 **Grails documentation is versioned**. You can check the documentation of the version of grails you are using. E.g. The documentation of Grails 4.0.1 is [https://docs.grails.org/4.0.1/guide/single.html](https://docs.grails.org/4.0.1/guide/single.html)
